@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Copy Address</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background: #f5f5f5;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #ff5722;
+      color: white;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover {
+      background: #e64a19;
+    }
+    .small {
+      margin-top: 20px;
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2 id="status">Copying address...</h2>
+
+    <button onclick="copyText()">ကော်ပီကူးရန် ဤနေရာသို့နှိပ်ပါ။</button>
+
+    <div class="small">
+      လိပ်စာကိုကူးထည့်(paste)ပြီးပါက ‘XX’ နေရာတွင် သင်၏ အဆောက်အအုံနံပါတ်နှင့် အခန်းနံပါတ်ကို ဖြည့်သွင်းပေးပါ။
+    </div>
+  </div>
+
+  <script>
+    const textToCopy = "ตึก xxx ห้อง xxx 222 ม.7 ต.บางปูใหม่ อ.เมืองสมุทรปราการ จ.สมุทรปราการ 10280";
+
+    function copyText() {
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        document.getElementById("status").innerText = "✅ ကော်ပီကူးပြီးပါပြီ။ Shopee သို့သွား၍ လိပ်စာကိုကူးထည့်(paste)ပါ။";
+      }).catch(() => {
+        document.getElementById("status").innerText = "ကျေးဇူးပြု၍ လိပ်စာအားကော်ပီကူးရန် ခလုတ်ကိုနှိပ်ပါ။";
+      });
+    }
+
+    // Try auto-copy on load
+    window.onload = function() {
+      copyText();
+    };
+  </script>
+
+</body>
+</html>
